@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './components/App';
 import * as serviceWorker from './serviceWorker';
+// import { Router, Route } from 'react-router';
+
+
+
 
 ReactDOM.render(
   <React.StrictMode>
