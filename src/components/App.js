@@ -21,6 +21,12 @@ class App extends Component {
     this.state={
       user : {}
     }
+
+    this.login = this.login.bind(this)
+    this.logout = this.logout.bind(this)
+    this.componentDidMount = this.componentDidMount.bind(this)
+    this.signup = this.signup.bind(this)
+    this.authListener = this.authListener.bind(this)
   }
 
   logout(){
@@ -31,25 +37,16 @@ class App extends Component {
     this.authListener();
   }
 
-  handleChange(event){
-    console.log(event)
-    this.setState({
-      [event.target.name] : event.target.value
-    })
-  }
-
-  login(event){
-    event.preventDefault();
-    fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((user) =>{
+  login(email, password){
+    fire.auth().signInWithEmailAndPassword(email, password).then((user) =>{
       console.log(user)
     }).catch((err)=>{
       console.log(err)
     })
   }
 
-  signup(event){
-    event.preventDefault();
-    fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((user) => {
+  signup(email, password){
+    fire.auth().createUserWithEmailAndPassword(email, password).then((user) => {
       console.log(user)
     }).catch((err)=>{
       console.log(err);
@@ -67,31 +64,30 @@ class App extends Component {
     })
   }
 
-  signup(event){
-    event.preventDefault();
-    fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((user) => {
-      console.log(user)
-    }).catch((err)=>{
-      console.log(err);
-    })
-  }
-
-
   render(){
     return (
       <div className="App">
+        <p>this is app.js</p>
         <Router>
           <div>
           <ul>
             {this.state.user
             ?
-            <li>
-              <Link to="/">Home</Link>
-            </li>
+            <div>
+              <li>
+                <Link onClick={this.logout} to="/">Logout</Link>
+              </li>
+              <li>
+                <Link to="/home">Home</Link>
+              </li>
+            </div>
             :
             <div>
               <li>
-              <Link to="/login">Login</Link>
+                <Link to="/home">Home</Link>
+              </li>
+              <li>
+                <Link to="/login">Login</Link>
               </li>
               <li>
                 <Link to="/signup">Signup</Link>
@@ -103,18 +99,32 @@ class App extends Component {
           </ul>
 
             <Switch>
-              <Route path="/signup">
-                <Signup signup={this.signup} authListener={this.authListener} componentDidMount={this.componentDidMount} handleChange={this.handleChange}/>
-              </Route>
-              <Route path="/login">
-                <Login login={this.login}/>
-              </Route>
-              <Route path="/wardrobes">
-                <Wardrobes />
-              </Route>
-              <Route path="/">
-                <Home logout={this.logout}/>
-              </Route>
+              {this.state.user
+              ?
+              <div>
+                <Route path="/home">
+                  <Home logout={this.logout}/>
+                </Route>
+                <Route path="/wardrobes">
+                  <Wardrobes />
+                </Route>
+              </div>
+              :
+              <div>
+                <Route path="/home">
+                  <Home logout={this.logout}/>
+                </Route>
+                <Route path="/signup">
+                  <Signup signup={this.signup} authListener={this.authListener} componentDidMount={this.componentDidMount}/>
+                </Route>
+                <Route path="/login">
+                  <Login login={this.login}/>
+                </Route>
+                <Route path="/wardrobes">
+                  <Wardrobes />
+                </Route>
+              </div>
+              }
             </Switch>
           </div>
         </Router>
