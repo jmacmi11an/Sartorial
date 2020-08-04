@@ -45,43 +45,26 @@ class WardrobeZeroForm extends Component{
 
   imageClick = (image) => {
     let item = image.target.name
-    console.log(fire.storage(), fire.database())
+    fire.database().ref("users").on("value", data => console.log(data.val()))
     console.log(image.target.name)
     this.setState({
       // wardrobeZero.[item].own = true
     })
+    fire.firestore().collection("cities").doc("LA").set({
+      name: image.target.name,
+      state: "CA",
+      country: "USA"
+    })
+    fire.firestore().collection("users").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            console.log(`${doc.id} ------- ${doc.data().email}`);
+        });
+    });
   }
 
   render(){
     return(
       <form class="wardrobe0">
-        <label>First Name</label>
-        <input
-        type="text"
-        name="first name"
-        id="first name"
-        placeholder="John"
-        // onChange={this.handleChange}
-        // value={this.state.email}
-        />
-        <label>Last Name</label>
-        <input
-        name="last name"
-        type="last name"
-        onChange={this.handleChange}
-        id="last name"
-        placeholder="Doe"
-        // value={this.state.password}
-        />
-        <label>Date of Birth</label>
-        <input
-        name="last name"
-        type="date"
-        onChange={this.handleChange}
-        id="last name"
-        placeholder="01/01/2000"
-        // value={this.state.password}
-        />
         <h3>Select which of these you already own</h3>
         <p>Don't worry about perfect matches, so long as you have something that is similar.</p>
         <img src={BlackTShirt} alt="Black T Shirt" name="BlackTShirt" onClick={this.imageClick}/>

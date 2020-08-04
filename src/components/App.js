@@ -40,11 +40,15 @@ class App extends Component {
 
   login(email, password){
     fire.auth().signInWithEmailAndPassword(email, password).then((user) =>{
-      console.log(user)
+      console.log(user);
     }).catch((err)=>{
       console.log(err)
     })
   }
+
+  // checkUser(){
+  //   if (this.state.user.uid)
+  // };
 
   signup(email, password){
     fire.auth().createUserWithEmailAndPassword(email, password).then((user) => {
@@ -52,6 +56,11 @@ class App extends Component {
     }).catch((err)=>{
       console.log(err);
     })
+    // fire.firestore().collection("users").get().then((querySnapshot) => {
+    //     querySnapshot.forEach((doc) => {
+    //         console.log(`${doc.data().email} ------- ${doc.data().email}`);
+    //     });
+    // });
   }
 
   authListener(){
@@ -74,6 +83,8 @@ class App extends Component {
             {this.state.user
             ?
             <div>
+            <h1>Welcome {this.state.user.email} (this comes from state not db)</h1>
+
               <li>
                 <Link onClick={this.logout} to="/">Logout</Link>
               </li>

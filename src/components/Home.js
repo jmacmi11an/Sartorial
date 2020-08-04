@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import WardrobeZeroForm from './WardrobeZeroForm';
+import PersonalInfoForm from './PersonalInfoForm';
 
 class Home extends Component{
   constructor(props){
@@ -12,9 +13,10 @@ class Home extends Component{
     return(
 
       <div>
-        <h1>Welcome to Sartorial</h1>
+        <h1>Welcome to Sar<span>t</span>orial</h1>
         <h3>Minimal and masterful dressing</h3>
         <p>A gentleman's guide to timeless fashion in a capsule closet. With an emphasis on quality over quantity, this curated 16 piece wardrobe provides the foundation for impeccable style. </p>
+        <PersonalInfoForm/>
         <WardrobeZeroForm/>
       </div>
     )
