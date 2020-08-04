@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import fire from "../config/fire";
+import Firebase from "../config/fire";
 
 class Signup extends Component{
   constructor(props){

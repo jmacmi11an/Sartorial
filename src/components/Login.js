@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import fire from '../config/fire';
+import Firebase from '../config/fire';
 import { Link, Route } from "react-router-dom";
 
 class Login extends Component{
@@ -7,12 +7,11 @@ class Login extends Component{
     super(props)
     this.state={
       password: '',
-      email: ''
+      email: '',
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
-
 
   handleChange(event){
     this.setState({

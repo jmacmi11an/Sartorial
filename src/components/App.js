@@ -4,6 +4,7 @@ import Login from './Login';
 import Signup from './Signup';
 import Wardrobes from './Wardrobes';
 import Home from './Home'
+import DressingRoom from './DressingRoom';
 import {
   BrowserRouter as Router,
   Switch,
@@ -67,7 +68,6 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-        <p>this is app.js</p>
         <Router>
           <div>
           <ul>
@@ -78,14 +78,14 @@ class App extends Component {
                 <Link onClick={this.logout} to="/">Logout</Link>
               </li>
               <li>
-                <Link to="/home">Home</Link>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/dressingroom">Dressing Room</Link>
               </li>
             </div>
             :
             <div>
-              <li>
-                <Link to="/home">Home</Link>
-              </li>
               <li>
                 <Link to="/login">Login</Link>
               </li>
@@ -102,18 +102,18 @@ class App extends Component {
               {this.state.user
               ?
               <div>
-                <Route path="/home">
+                <Route exact path="/">
                   <Home logout={this.logout}/>
                 </Route>
                 <Route path="/wardrobes">
                   <Wardrobes />
                 </Route>
+                <Route path="/dressingroom">
+                  <DressingRoom />
+                </Route>
               </div>
               :
               <div>
-                <Route path="/home">
-                  <Home logout={this.logout}/>
-                </Route>
                 <Route path="/signup">
                   <Signup signup={this.signup} authListener={this.authListener} componentDidMount={this.componentDidMount}/>
                 </Route>
@@ -122,6 +122,9 @@ class App extends Component {
                 </Route>
                 <Route path="/wardrobes">
                   <Wardrobes />
+                </Route>
+                <Route exact path="/">
+                  <Home logout={this.logout} user={this.state.user}/>
                 </Route>
               </div>
               }
