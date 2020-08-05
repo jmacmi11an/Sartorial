@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import Firebase from "../config/fire";
+import faker from 'faker';
 
 class Signup extends Component{
   constructor(props){
     super(props)
     this.state={
-      password: '',
-      email: '',
+      password: 'chicken',
+      email: faker.internet.email(),
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)

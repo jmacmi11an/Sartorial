@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import Firebase from '../config/fire';
 import { Link, Route } from "react-router-dom";
+import faker from 'faker';
+
 
 class Login extends Component{
   constructor(props){
     super(props)
     this.state={
-      password: '',
-      email: '',
+      password: 'chicken',
+      email: faker.internet.email(),
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)

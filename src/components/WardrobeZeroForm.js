@@ -20,54 +20,57 @@ import WhiteTShirt from '../images/WhiteTShirt.jpg';
 
 
 class WardrobeZeroForm extends Component{
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
-      wardrobeZero : {
-        "BlackTShirt" : {"own": false, "category": "top", "season": "any"},
-        "BlueTShirt" : {"own": false, "category": "top"},
-        "WhiteTShirt" : {"own": false, "category": "top"},
-        "BluePolo" : {"own": false, "category": "top"},
-        "BlueChambrayShirt" : {"own": false, "category": "top"},
-        "WhiteShirt" : {"own": false, "category": "top"},
-        "BlueShirt" : {"own": false},
-        "GreySweater" : {"own": false},
-        "GreyTrousers" : {"own": false},
-        "BlueJeans" : {"own": false},
-        "KhakiChinos" : {"own": false},
-        "BlueBlazer" : {"own": false},
-        "BlackCafeRacerJacket" : {"own": false},
-        "BlackBoots" : {"own": false},
-        "WhiteSneakers" : {"own": false}
-      }
+        "BlackTShirt" : false,
+        "BlueTShirt" : false,
+        "WhiteTShirt" : false,
+        "BluePolo" : false,
+        "BlueChambrayShirt" : false,
+        "WhiteShirt" : false,
+        "BlueShirt" : false,
+        "GreySweater" : false,
+        "GreyTrousers" : false,
+        "BlueJeans" : false,
+        "KhakiChinos" : false,
+        "BlueBlazer" : false,
+        "BlackCafeRacerJacket" : false,
+        "BlackBoots" : false,
+        "WhiteSneakers" : false,
     }
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   imageClick = (image) => {
-    let item = image.target.name
-    fire.database().ref("users").on("value", data => console.log(data.val()))
-    console.log(image.target.name)
-    this.setState({
-      // wardrobeZero.[item].own = true
-    })
-    fire.firestore().collection("cities").doc("LA").set({
-      name: image.target.name,
+    // fire.database().ref("users").on("value", data => console.log(data.val()))
+    this.state[image.target.name] ? this.setState({ [image.target.name] : false }) : this.setState({ [image.target.name] : true })
+    fire.firestore().collection("users").doc("LA").set({
+      name: "name",
       state: "CA",
       country: "USA"
     })
-    fire.firestore().collection("users").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            console.log(`${doc.id} ------- ${doc.data().email}`);
-        });
-    });
   }
+
+
+// [this.props.user.id]
+  onSubmit = (props) => {
+    console.log(this.props.user)
+    fire.firestore().collection("users").doc("dEUsxeGK9coC0LWscv5I").collection("WardrobeZero").add([...this.state])
+    // fire.firestore().collection("users").get().then((querySnapshot) => {
+    //   querySnapshot.forEach((doc) => {
+    //     console.log(`${doc.id} -------${doc.data().email}`)
+    //   });
+    // });
+  };
+
 
   render(){
     return(
-      <form class="wardrobe0">
+      <form class="wardrobe0" onSubmit={this.onSubmit}>
         <h3>Select which of these you already own</h3>
         <p>Don't worry about perfect matches, so long as you have something that is similar.</p>
-        <img src={BlackTShirt} alt="Black T Shirt" name="BlackTShirt" onClick={this.imageClick}/>
+        <img src={BlackTShirt} alt="Black T Shirt" name="BlackTShirt" onClick={this.imageClick} className={this.state[this.name] ? 'active' : null}/>
         <img src={BlueTShirt} alt="Blue T Shirt" name="BlueTShirt" onClick={this.imageClick}/>
         <img src={WhiteTShirt} alt="White T Shirt" name="WhiteTShirt" onClick={this.imageClick}/>
         <img src={BluePolo} alt="Blue Polo" name="BluePolo" onClick={this.imageClick}/>
@@ -89,3 +92,7 @@ class WardrobeZeroForm extends Component{
 }
 
 export default WardrobeZeroForm;
+
+
+
+//

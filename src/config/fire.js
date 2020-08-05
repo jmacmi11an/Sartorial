@@ -1,5 +1,6 @@
-import firebase from 'firebase';
-// import 'firebase/db';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
 
 
 const firebaseConfig = {
@@ -13,8 +14,14 @@ const firebaseConfig = {
   measurementId: "G-9FX8T8V0HX"
 };
 
+
+export const currentUser = async () => {
+  const user = await fire.auth().currentUser
+  return user ? user : null
+}
+
 const fire = firebase.initializeApp(firebaseConfig);
-const db = firebase.database()
+export const db = firebase.firestore()
 // import {storage} from './fire'
 
-export {db, fire as default};
+export default fire;
