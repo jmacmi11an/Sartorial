@@ -1,15 +1,67 @@
 import React, { Component } from 'react';
-import fire from "../config/fire";
+import fire, { db, currentUser } from "../config/fire";
 
 class DressingRoom extends Component{
-  constructor(){
-    super()
+  constructor(props){
+    super(props);
+    this.state={
+      myWardrobeZero: {},
+      filteredWardrobe: [],
+    }
+
+    this.onSubmit = this.onSubmit.bind(this);
+
   }
 
-  render(){
+
+//this function needs work.
+// The plan is for on submit of the "dress me" button
+//this function runs and queries the db for the user's
+  async onSubmit(event){
+    event.preventDefault();
+    this.setState({
+      myWardrobeZero: this.props.userDetails.wardrobeZero
+    })
+    console.log(event)
+    // if (this.state.myWardrobeZero)
+    // const user = await currentUser();
+    // const myWardrobeZero = [];
+    // if (user){
+    //   db
+    //     .collection("users")
+    //     .doc(user.uid)
+    //     .get()
+    //     .then((doc) => {
+    //       if (doc){
+    //         myWardrobeZero.push(doc.data())
+    //       }
+    //     })
+    //
+    // }
+    // console.log(myWardrobeZero)
+    // console.log(myWardrobeZero["BlackTShirt"])
+  }
+
+
+//grab user info about clothes from props
+//filter out false objects
+// creating an array of true objects
+// object.keys()
+
+
+  render(props){
     return(
       <div>
         <h1>Dressing Room coming soon</h1>
+        <p>First name: {this.props.userDetails["First Name"]}</p>
+        <p>Last name: {this.props.userDetails["Last Name"]}</p>
+        <p>DOB: {this.props.userDetails["DOB"]}</p>
+        <div>
+        <form onSubmit={this.onSubmit}>
+          <button>Dress Me</button>
+        </form>
+
+        </div>
       </div>
     )
   }
@@ -42,4 +94,4 @@ export default DressingRoom;
 
   //create a button
     //on click run the dressMe function for new samples
-    //re render the four divs. 
+    //re render the four divs.

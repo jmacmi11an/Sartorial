@@ -20,7 +20,8 @@ class App extends Component {
   constructor(){
     super();
     this.state={
-      user : {}
+      user : {},
+      userDetails: {}
     }
 
     this.login = this.login.bind(this)
@@ -38,18 +39,26 @@ class App extends Component {
     this.authListener();
   }
 
-  login(email, password){
-    fire.auth().signInWithEmailAndPassword(email, password).then((user) =>{
-      console.log(user);
-
-    }).catch((err)=>{
-      console.log(err)
-    })
-  }
-
-  // checkUser(){
-  //   if (this.state.user.uid)
-  // };
+  async login(email, password){
+    await fire.auth().signInWithEmailAndPassword(email, password)
+    const user = await currentUser();
+    if (user){
+      db
+        .collection("users")
+        .doc(user.uid)
+        .get()
+        .then((doc) => {
+          if (doc){
+            this.setState({
+              userDetails: doc.data()
+            })
+            console.log("document data:", doc.data() );
+          }
+        }).catch(function(error){
+          console.log("error getting document:", error);
+        })
+    }
+  };
 
   async signup(email, password){
     await fire.auth().createUserWithEmailAndPassword(email, password)
@@ -64,16 +73,24 @@ class App extends Component {
       }
     }
 
-    // fire.firestore().collection("users").get().then((querySnapshot) => {
-    //     querySnapshot.forEach((doc) => {
-    //         console.log(`${doc.data().email} ------- ${doc.data().email}`);
-    //     });
-    // });
-
   authListener(){
     fire.auth().onAuthStateChanged((user) => {
       if(user){
         this.setState({user})
+        db
+          .collection("users")
+          .doc(user.uid)
+          .get()
+          .then((doc) => {
+            if (doc){
+              this.setState({
+                userDetails: doc.data()
+              })
+              console.log("document data:", doc.data() );
+            }
+          }).catch(function(error){
+            console.log("error getting document:", error);
+          })
       }
       else{
         this.setState({user:null})
@@ -90,7 +107,7 @@ class App extends Component {
             {this.state.user
             ?
             <div>
-            <h1>Welcome {this.state.user.email} (this comes from state not db)</h1>
+            <h1>Welcome {(this.state.userDetails["First Name"]) ? this.state.userDetails["First Name"] :this.state.user.email}, </h1>
 
               <li>
                 <Link onClick={this.logout} to="/">Logout</Link>
@@ -127,7 +144,7 @@ class App extends Component {
                   <Wardrobes />
                 </Route>
                 <Route path="/dressingroom">
-                  <DressingRoom />
+                  <DressingRoom userDetails={this.state.userDetails}/>
                 </Route>
               </div>
               :
