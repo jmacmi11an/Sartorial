@@ -55,12 +55,11 @@ class App extends Component {
     await fire.auth().createUserWithEmailAndPassword(email, password)
     const user = await currentUser();
     if (user){
-      console.log(user.toJSON())
       db
         .collection("users")
         .doc(user.uid)
         .set({
-          users: "anything",
+          email: user.email,
         })
       }
     }

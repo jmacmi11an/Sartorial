@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import fire from '../config/fire';
+import fire, { db, currentUser } from '../config/fire';
 
 
 
@@ -8,49 +8,58 @@ class PersonalInfoForm extends Component{
   constructor(){
     super()
     this.state = {
-      wardrobeZero : {
-      }
+      "First Name" : '',
+      "Last Name" : '',
+      "DOB" : null,
     }
+    this.handleChange = this.handleChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
-  imageClick = (image) => {
-    let item = image.target.name
-    console.log(fire.storage(), fire.database())
-    console.log(image.target.name)
-    this.setState({
-      // wardrobeZero.[item].own = true
-    })
+  async onSubmit(event){
+    event.preventDefault();
+    const user = await currentUser();
+    console.log(user)
+    if (user){
+      db
+        .collection("users")
+        .doc(user.uid)
+        .update({
+          ...this.state
+        })
+      }
+      console.log(user, this.state);
+  };
+
+  handleChange(event){
+    this.setState({[event.target.name] : event.target.value});
   }
 
   render(){
     return(
-      <form class="wardrobe0">
+      <form class="wardrobe0" onSubmit={this.onSubmit}>
         <label>First Name</label>
         <input
         type="text"
-        name="first name"
+        name="First Name"
         id="first name"
         placeholder="John"
-        // onChange={this.handleChange}
-        // value={this.state.email}
+        onChange={this.handleChange}
         />
         <label>Last Name</label>
         <input
-        name="last name"
+        name="Last Name"
         type="last name"
         onChange={this.handleChange}
         id="last name"
         placeholder="Doe"
-        // value={this.state.password}
         />
         <label>Date of Birth</label>
         <input
-        name="last name"
+        name="DOB"
         type="date"
         onChange={this.handleChange}
-        id="last name"
-        placeholder="01/01/2000"
-        // value={this.state.password}
+        id="dob"
         />
         <button>Next Page...</button>
       </form>

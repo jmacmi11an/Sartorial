@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import fire from '../config/fire';
+import fire, { db, currentUser } from '../config/fire';
 import './WardrobeZero.css';
 import BlackCafeRacerJacket from '../images/BlackCafeRacerJacket.jpg';
 import BlackBoots from '../images/BlackBoots.jpg';
@@ -43,25 +43,19 @@ class WardrobeZeroForm extends Component{
   }
 
   imageClick = (image) => {
-    // fire.database().ref("users").on("value", data => console.log(data.val()))
     this.state[image.target.name] ? this.setState({ [image.target.name] : false }) : this.setState({ [image.target.name] : true })
-    fire.firestore().collection("users").doc("LA").set({
-      name: "name",
-      state: "CA",
-      country: "USA"
-    })
   }
 
-
-// [this.props.user.id]
-  onSubmit = (props) => {
-    console.log(this.props.user)
-    fire.firestore().collection("users").doc("dEUsxeGK9coC0LWscv5I").collection("WardrobeZero").add([...this.state])
-    // fire.firestore().collection("users").get().then((querySnapshot) => {
-    //   querySnapshot.forEach((doc) => {
-    //     console.log(`${doc.id} -------${doc.data().email}`)
-    //   });
-    // });
+  async onSubmit(){
+    const user = await currentUser();
+    if (user){
+      db
+        .collection("users")
+        .doc(user.uid)
+        .update({
+          wardrobeZero : this.state,
+        })
+      }
   };
 
 
@@ -92,7 +86,3 @@ class WardrobeZeroForm extends Component{
 }
 
 export default WardrobeZeroForm;
-
-
-
-//
