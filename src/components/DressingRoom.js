@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
+import _ from 'underscore';
 import fire, { db, currentUser } from "../config/fire";
+import { createOutfit } from './Helpers/outfit';
+
+
+
 
 class DressingRoom extends Component{
   constructor(props){
@@ -7,46 +12,24 @@ class DressingRoom extends Component{
     this.state={
       myWardrobeZero: {},
       filteredWardrobe: [],
+      clicked: false,
     }
 
     this.onSubmit = this.onSubmit.bind(this);
-
   }
 
 
-//this function needs work.
-// The plan is for on submit of the "dress me" button
-//this function runs and queries the db for the user's
-  async onSubmit(event){
+  onSubmit(event){
     event.preventDefault();
     this.setState({
-      myWardrobeZero: this.props.userDetails.wardrobeZero
+      myWardrobeZero: this.props.userDetails.wardrobeZero,
+      clicked: true,
+      outfit: createOutfit(this.props.filteredClothes)
+
     })
-    console.log(event)
-    // if (this.state.myWardrobeZero)
-    // const user = await currentUser();
-    // const myWardrobeZero = [];
-    // if (user){
-    //   db
-    //     .collection("users")
-    //     .doc(user.uid)
-    //     .get()
-    //     .then((doc) => {
-    //       if (doc){
-    //         myWardrobeZero.push(doc.data())
-    //       }
-    //     })
-    //
-    // }
-    // console.log(myWardrobeZero)
-    // console.log(myWardrobeZero["BlackTShirt"])
   }
 
 
-//grab user info about clothes from props
-//filter out false objects
-// creating an array of true objects
-// object.keys()
 
 
   render(props){
@@ -61,13 +44,45 @@ class DressingRoom extends Component{
           <button>Dress Me</button>
         </form>
 
+
         </div>
+        {(this.state.clicked) ?
+          <div>
+            <Outfit outfit={this.state.outfit}/>
+          </div>
+          :
+          null
+        }
       </div>
     )
   }
 }
 
+
+
+
+
+function Outfit(props){
+  console.log(props.outfit)
+
+  return(
+    <div>
+      { props.outfit.map( (source) => <img src={source.data.img} alt={source.name} key={ source.name } className="outfit"/> ) }
+      <h3>click worked</h3>
+    </div>
+  )
+}
+
+
+
 export default DressingRoom;
+
+
+
+
+
+
+
 
 
 

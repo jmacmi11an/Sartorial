@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import './WardrobeZero.css';
-import BlackCafeRacerJacket from '../images/BlackCafeRacerJacket.jpg';
-import BlackBoots from '../images/BlackBoots.jpg';
-import BlackTShirt from '../images/BlackTShirt.jpg';
-import BlueBlazer from '../images/BlueBlazer.jpg';
-import BlueChambrayShirt from '../images/BlueChambrayShirt.jpg';
-import BlueJeans from '../images/BlueJeans.jpg';
-import BluePolo from '../images/BluePolo.jpg';
-import BlueShirt from '../images/BlueShirt.jpg';
-import BlueTShirt from '../images/BlueTShirt.jpg';
-import GreySweater from '../images/GreySweater.jpg';
-import GreyTrousers from '../images/GreyTrousers.jpg';
-import KhakiChinos from '../images/KhakiChinos.jpg';
-import WhiteShirt from '../images/WhiteShirt.jpg';
-import WhiteSneakers from '../images/WhiteSneakers.jpg';
-import WhiteTShirt from '../images/WhiteTShirt.jpg';
+import BlackCafeRacerJacket from '../images/blackcaferacerjacket.jpg';
+import BlackBoots from '../images/blackboots.jpg';
+import BlackTShirt from '../images/blacktshirt.jpg';
+import BlueBlazer from '../images/blueblazer.jpg';
+import BlueChambrayShirt from '../images/bluechambrayshirt.jpg';
+import BlueJeans from '../images/bluejeans.jpg';
+import BluePolo from '../images/bluepolo.jpg';
+import BlueShirt from '../images/blueshirt.jpg';
+import BlueTShirt from '../images/bluetshirt.jpg';
+import GreySweater from '../images/greysweater.jpg';
+import GreyTrousers from '../images/greytrousers.jpg';
+import KhakiChinos from '../images/khakichinos.jpg';
+import WhiteShirt from '../images/whiteshirt.jpg';
+import WhiteSneakers from '../images/whitesneakers.jpg';
+import WhiteTShirt from '../images/whitetshirt.jpg';
 
 
 

@@ -5,6 +5,7 @@ import Signup from './Signup';
 import Wardrobes from './Wardrobes';
 import Home from './Home'
 import DressingRoom from './DressingRoom';
+import { filteredWardrobe } from './Helpers/clothes';
 import {
   BrowserRouter as Router,
   Switch,
@@ -21,7 +22,7 @@ class App extends Component {
     super();
     this.state={
       user : {},
-      userDetails: {}
+      userDetails: {},
     }
 
     this.login = this.login.bind(this)
@@ -50,7 +51,8 @@ class App extends Component {
         .then((doc) => {
           if (doc){
             this.setState({
-              userDetails: doc.data()
+              userDetails: doc.data(),
+              filteredClothes: filteredWardrobe(doc.data().wardrobeZero)
             })
             console.log("document data:", doc.data() );
           }
@@ -84,7 +86,8 @@ class App extends Component {
           .then((doc) => {
             if (doc){
               this.setState({
-                userDetails: doc.data()
+                userDetails: doc.data(),
+                filteredClothes: filteredWardrobe(doc.data().wardrobeZero)
               })
               console.log("document data:", doc.data() );
             }
@@ -103,12 +106,12 @@ class App extends Component {
       <div className="App">
         <Router>
           <div>
-          <ul>
+          <h1>Sar<span>t</span>orial</h1>
+          <h4>Welcome {(this.state.userDetails["First Name"]) ? this.state.userDetails["First Name"] :null} </h4>
+          <ul className="navbar">
             {this.state.user
             ?
             <div>
-            <h1>Welcome {(this.state.userDetails["First Name"]) ? this.state.userDetails["First Name"] :this.state.user.email}, </h1>
-
               <li>
                 <Link onClick={this.logout} to="/">Logout</Link>
               </li>
@@ -117,6 +120,9 @@ class App extends Component {
               </li>
               <li>
                 <Link to="/dressingroom">Dressing Room</Link>
+              </li>
+              <li>
+                <Link to="/wardrobes">Wardrobes</Link>
               </li>
             </div>
             :
@@ -127,10 +133,10 @@ class App extends Component {
               <li>
                 <Link to="/signup">Signup</Link>
               </li>
+              <li>
+                <Link to="/wardrobes">Wardrobes</Link>
+              </li>
             </div>}
-            <li>
-              <Link to="/wardrobes">Wardrobes</Link>
-            </li>
           </ul>
 
             <Switch>
@@ -144,7 +150,7 @@ class App extends Component {
                   <Wardrobes />
                 </Route>
                 <Route path="/dressingroom">
-                  <DressingRoom userDetails={this.state.userDetails}/>
+                  <DressingRoom filteredClothes={this.state.filteredClothes} userDetails={this.state.userDetails}/>
                 </Route>
               </div>
               :
