@@ -48,17 +48,17 @@ class WardrobeZeroForm extends Component{
     this.state[image.target.name] ? this.setState({ [image.target.name] : false }) : this.setState({ [image.target.name] : true })
   }
 
-  async onSubmit(){
+  async onSubmit(event){
+    event.preventDefault()
     const user = await currentUser();
-    if (user){
-      db
-        .collection("users")
-        .doc(user.uid)
-        .update({
-          wardrobeZero : this.state,
-        })
-      }
-      this.props.history.push('/dressingroom')
+    await db
+      .collection("users")
+      .doc(user.uid)
+      .update({
+        wardrobeZero : this.state,
+      })
+    await this.props.updateUserState()
+    this.props.history.push('/dressingroom')
   };
 
 

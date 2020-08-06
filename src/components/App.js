@@ -32,6 +32,7 @@ class App extends Component {
     this.componentDidMount = this.componentDidMount.bind(this)
     this.signup = this.signup.bind(this)
     this.authListener = this.authListener.bind(this)
+    this.updateUserState = this.updateUserState.bind(this)
   }
 
   logout(){
@@ -48,6 +49,10 @@ class App extends Component {
 
   async login(email, password){
     await fire.auth().signInWithEmailAndPassword(email, password)
+    this.updateUserState();
+  };
+
+  async updateUserState(){
     const user = await currentUser();
     if (user){
       db
@@ -60,13 +65,12 @@ class App extends Component {
               userDetails: doc.data(),
               filteredClothes: filteredWardrobe(doc.data().wardrobeZero)
             })
-            console.log("document data:", doc.data() );
           }
         }).catch(function(error){
           console.log("error getting document:", error);
         })
     }
-  };
+  }
 
   async signup(email, password){
     await fire.auth().createUserWithEmailAndPassword(email, password)
@@ -158,7 +162,7 @@ class App extends Component {
                   <PersonalInfoForm signup={this.signup} {...props} authListener={this.authListener} componentDidMount={this.componentDidMount}/>
                 )}/>
                 <Route path="/clothes" component={(props) => (
-                  <WardrobeZeroForm signup={this.signup} {...props} authListener={this.authListener}/>
+                  <WardrobeZeroForm signup={this.signup} {...props} authListener={this.authListener} updateUserState={this.updateUserState}/>
                 )}/>
               </div>
               :
