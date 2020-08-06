@@ -5,6 +5,8 @@ import Signup from './Signup';
 import Wardrobes from './Wardrobes';
 import Home from './Home'
 import DressingRoom from './DressingRoom';
+import PersonalInfoForm from './PersonalInfoForm';
+import WardrobeZeroForm from './WardrobeZeroForm';
 import { filteredWardrobe } from './Helpers/clothes';
 import {
   BrowserRouter as Router,
@@ -34,6 +36,10 @@ class App extends Component {
 
   logout(){
     fire.auth().signOut();
+    this.setState({
+      user: {},
+      userDetails: {}
+    })
   }
 
   componentDidMount(){
@@ -107,7 +113,7 @@ class App extends Component {
         <Router>
           <div>
           <h1>Sar<span>t</span>orial</h1>
-          <h4>Welcome {(this.state.userDetails["First Name"]) ? this.state.userDetails["First Name"] :null} </h4>
+          <h4>Welcome {(this.state.userDetails["First Name"]) ? this.state.userDetails["First Name"] : "to your fashion solution"} </h4>
           <ul className="navbar">
             {this.state.user
             ?
@@ -127,15 +133,6 @@ class App extends Component {
             </div>
             :
             <div>
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-              <li>
-                <Link to="/signup">Signup</Link>
-              </li>
-              <li>
-                <Link to="/wardrobes">Wardrobes</Link>
-              </li>
             </div>}
           </ul>
 
@@ -144,7 +141,12 @@ class App extends Component {
               ?
               <div>
                 <Route exact path="/">
-                  <Home logout={this.logout}/>
+                  <Home
+                    logout={this.logout}
+                    user={this.state.user}
+                    userDetails={this.state.userDetails}
+                    filteredClothes={this.state.filteredClothes}
+                  />
                 </Route>
                 <Route path="/wardrobes">
                   <Wardrobes />
@@ -152,20 +154,30 @@ class App extends Component {
                 <Route path="/dressingroom">
                   <DressingRoom filteredClothes={this.state.filteredClothes} userDetails={this.state.userDetails}/>
                 </Route>
+                <Route path="/details" component={(props) => (
+                  <PersonalInfoForm signup={this.signup} {...props} authListener={this.authListener} componentDidMount={this.componentDidMount}/>
+                )}/>
+                <Route path="/clothes" component={(props) => (
+                  <WardrobeZeroForm signup={this.signup} {...props} authListener={this.authListener}/>
+                )}/>
               </div>
               :
               <div>
-                <Route path="/signup">
-                  <Signup signup={this.signup} authListener={this.authListener} componentDidMount={this.componentDidMount}/>
-                </Route>
-                <Route path="/login">
-                  <Login login={this.login}/>
-                </Route>
+                <Route path="/signup" component={(props) => (
+                  <Signup signup={this.signup} {...props} authListener={this.authListener} componentDidMount={this.componentDidMount}/>
+                )}/>
+                <Route path="/login" component={(props) => (
+                  <Login login={this.login} {...props}/>
+                )}/>
                 <Route path="/wardrobes">
                   <Wardrobes />
                 </Route>
                 <Route exact path="/">
-                  <Home logout={this.logout} user={this.state.user}/>
+                  <Home
+                    logout={this.logout}
+                    user={this.state.user}
+                    userDetails={this.state.userDetails}
+                  />
                 </Route>
               </div>
               }
@@ -179,3 +191,12 @@ class App extends Component {
 
 
 export default App;
+
+
+// used to be in the div in the ternary before wardrobe
+// <li>
+//   <Link to="/login">Login</Link>
+// </li>
+// <li>
+//   <Link to="/signup">Signup</Link>
+// </li>

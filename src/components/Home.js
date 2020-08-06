@@ -3,20 +3,41 @@
 import React, { Component } from 'react';
 import WardrobeZeroForm from './WardrobeZeroForm';
 import PersonalInfoForm from './PersonalInfoForm';
+import { Link, Switch, Route } from 'react-router-dom';
+import Login from './Login';
+import Signup from './Signup';
+import DressingRoom from './DressingRoom';
 
 class Home extends Component{
   constructor(props){
     super(props)
   }
 
-  render(){
+  render(props){
+    console.log(this.props.userDetails)
     return(
 
       <div>
-        <h3>Minimal and masterful dressing</h3>
-        <p>A gentleman's guide to timeless fashion in a capsule closet. With an emphasis on quality over quantity, this curated 16 piece wardrobe provides the foundation for impeccable style. </p>
-        <PersonalInfoForm/>
-        <WardrobeZeroForm user={this.props.user}/>
+        {(this.props.userDetails.wardrobeZero) ?
+          <div>
+            <DressingRoom
+              filteredClothes={this.props.filteredClothes}
+              userDetails={this.props.userDetails}
+            />
+          </div>
+          :
+          <div>
+            <h2>Minimal and masterful dressing</h2>
+            <h4>A gentleman's guide to timeless fashion in a capsule closet. With an emphasis on quality over quantity, this curated 16 piece wardrobe provides the foundation for impeccable style. </h4>
+            <p>Here at Sartorial we believe that elegant and appropriate style can be achieved by any man who desires it. Reduce your wardrobe from many items with specific functions, to a few items with incredible versatility. Decision fatigue is real. How you present yourself is important. By investing in the well-crafted basics ensure that you will always be suitably dressed for the occasion.</p>
+            <button>
+              <Link to="/login">Login</Link>
+            </button>
+            <button>
+              <Link to="/signup">Signup</Link>
+            </button>
+          </div>
+        }
       </div>
     )
   }
@@ -25,13 +46,11 @@ class Home extends Component{
 export default Home;
 
 
-//can I put this right after the opening div?
-// {this.props.user.email
-// ?
-// <div>
-//   <h3>Welcome {this.props.user.email}</h3>
-// </div>
-// :
-// <div>
-//   <h3>Welcome guest</h3>
-// </div>}
+// this used to be right after PersonalInfoForm
+// <PersonalInfoForm/>
+// <WardrobeZeroForm user={this.props.user}/>
+
+//this used to be after the two buttons
+// <li>
+//   <Link to="/wardrobes">Wardrobes</Link>
+// </li>

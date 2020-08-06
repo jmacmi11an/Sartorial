@@ -28,7 +28,7 @@ class PersonalInfoForm extends Component{
           ...this.state
         })
       }
-      console.log(user, this.state);
+      this.props.history.push('/clothes')
   };
 
   handleChange(event){
@@ -38,6 +38,7 @@ class PersonalInfoForm extends Component{
   render(){
     return(
       <form class="wardrobe0" onSubmit={this.onSubmit}>
+        <h2>Almost there...</h2>
         <label>First Name</label>
         <input
         type="text"

@@ -15,6 +15,8 @@ import KhakiChinos from '../images/khakichinos.jpg';
 import WhiteShirt from '../images/whiteshirt.jpg';
 import WhiteSneakers from '../images/whitesneakers.jpg';
 import WhiteTShirt from '../images/whitetshirt.jpg';
+import CamelSweater from '../images/camelsweater.jpg';
+
 
 
 
@@ -34,6 +36,7 @@ class WardrobeZero extends Component{
         <img src={WhiteShirt} alt="White Shirt" />
         <img src={BlueShirt} alt="Blue Shirt" />
         <img src={GreySweater} alt="Grey Sweater" />
+        <img src={CamelSweater} alt="Camel Sweater" />
         <img src={GreyTrousers} alt="Grey Trousers" />
         <img src={BlueJeans} alt="Blue Jeans" />
         <img src={KhakiChinos} alt="Khaki Chinos" />

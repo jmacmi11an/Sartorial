@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import PersonalInfoForm from './PersonalInfoForm';
 import Firebase from "../config/fire";
 import faker from 'faker';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class Signup extends Component{
   constructor(props){
@@ -8,6 +10,7 @@ class Signup extends Component{
     this.state={
       password: 'chicken',
       email: faker.internet.email(),
+      clicked: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -23,12 +26,15 @@ class Signup extends Component{
   handleSubmit(event){
     event.preventDefault();
     this.props.signup(this.state.email, this.state.password)
+    this.props.history.push('/details')
+
   }
 
   render(){
     return(
       <div>
-        <h1>this is signup</h1>
+        <h2>A few more steps until your journey starts</h2>
+        {!(this.state.clicked) ?
         <form onSubmit={this.handleSubmit}>
           <input
           type="email"
@@ -48,6 +54,11 @@ class Signup extends Component{
           />
           <button>Signup</button>
         </form>
+        :
+        <div>
+          <PersonalInfoForm/>
+        </div>
+      }
       </div>
     )
   }

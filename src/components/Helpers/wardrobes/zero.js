@@ -8,6 +8,7 @@ import BluePolo from '../../../images/bluepolo.jpg';
 import BlueShirt from '../../../images/blueshirt.jpg';
 import BlueTShirt from '../../../images/bluetshirt.jpg';
 import GreySweater from '../../../images/greysweater.jpg';
+import CamelSweater from '../../../images/camelsweater.jpg';
 import GreyTrousers from '../../../images/greytrousers.jpg';
 import KhakiChinos from '../../../images/khakichinos.jpg';
 import WhiteShirt from '../../../images/whiteshirt.jpg';
@@ -25,6 +26,7 @@ export default {
 	blueshirt: { type: 'top', img: BlueShirt},
 	bluetshirt: { type: 'top', img: BlueTShirt},
 	greysweater: { type: 'top', img: GreySweater},
+	camelsweater: { type: 'top', img: CamelSweater},
 	greytrousers: { type: 'bottoms', img: GreyTrousers},
 	khakichinos: { type: 'bottoms', img:  KhakiChinos},
 	whiteshirt: { type: 'top', img:  WhiteShirt},

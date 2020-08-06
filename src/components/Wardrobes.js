@@ -9,7 +9,7 @@ class Wardrobes extends Component{
   render(){
     return(
       <div>
-        <h1>Wardrobes Page coming soon</h1>
+        <h2>In the near future this page will reveal the custom wardrobes of our proud users.</h2>
       </div>
     )
   }

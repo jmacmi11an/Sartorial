@@ -1,0 +1,15 @@
+button {
+  margin: 4px;
+  padding: 4px;
+  border-radius: 1px;
+}
+
+div.outfit {
+  max-width: 80%;
+}
+
+img.outfit {
+  border: 1em;
+  margin: .5em;
+  height: 200px;
+}

@@ -24,13 +24,14 @@ class Login extends Component{
   handleSubmit(event){
     event.preventDefault();
     this.props.login(this.state.email, this.state.password)
+    this.props.history.push('/')
   }
 
 
   render(){
     return(
       <div>
-      <h1>this is login</h1>
+      <h2>Prepare to enter your wardrobe...</h2>
         <form onSubmit={this.handleSubmit}>
           <input
           type="email"
