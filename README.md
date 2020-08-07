@@ -1,18 +1,18 @@
-#Sartorial
-##A web application in development
+# Sartorial
+## A web application in development
 https://sartorial-5c2a4.web.app/dressingroom
 
-##Technologies
+## Technologies
 React
 Underscore
 Firebase
 
-##Summary
-Sartorial is a website catering to men interested in creating a minimalist and yet stylish wardrobe.
+## Summary
+Sartorial is a website catering to men interested in creating a minimalist and yet stylish wardrobe. As users acquire wardrobe pieces their outfit suggestions become more diverse. As users age their wardrobe suggestions change.
 
 
 
-##Skills Improved Upon/Lessons Learned
+## Skills Improved Upon/Lessons Learned
 
 I'll start with skills that I have improved upon since past projects. First of all I spent much more time planning this project. This included outlining the page views that I wanted, where components would be displayed, what components I would need, etc. During this time I also drew out several sketches about how best to organize the storing of certain data - principally, the Wardrobe Zero items as well as all future items. I considered storing the Wardrobe Zero items in my database and attaching their unique ID to users. But in the end decided on storing them locally since they will always start out the same. In the future however, I foresee running into some problems if/when I allow users to modify their Wardrobe Zero items.
 
@@ -20,12 +20,15 @@ I was much more specific with naming conventions throughout this project and pro
 
 The use of firebase was one of the biggest obstacles to my early progress. I spent several days trying to connect what was successful user authentication in firebase, to my stored database of user information. After attaching this data there was a good deal of time spent learning how to modify data as well as query it.
 
+Even with time dedicated to brainstorming the best way to store data I made a lot of mistakes which required a few restarts.
 
 
 
-###Future Updates
+
+### Future Updates
 [ ] Design - this website is in desperate need of some quality CSS.
-[ ] Creating a page that clearly allows users to modify what wardrobe items they have.
+[ ] Creating a page that clearly allows users to modify what wardrobe items they have from within their Wardrobe Zero.
+[ ] Creating a page that clearly allows users to customize their Wardrobe Zero items. .
 [ ] Creating a page that clearly allows users to modify their personal information.
 [ ] Allow Profile photo options, style preferences and general personalization.
 [ ] Include easter eggs for users based on their birthday.
