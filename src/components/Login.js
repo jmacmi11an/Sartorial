@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import fire from '../config/fire';
-import { Link, Route } from "react-router-dom";
-import faker from 'faker';
 
 
 class Login extends Component{

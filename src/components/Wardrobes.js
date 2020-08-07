@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import fire from "../config/fire";
 
 class Wardrobes extends Component{
   constructor(){

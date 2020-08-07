@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PersonalInfoForm from './PersonalInfoForm';
-import Firebase from "../config/fire";
 import faker from 'faker';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class Signup extends Component{
   constructor(props){

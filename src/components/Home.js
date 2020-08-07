@@ -1,11 +1,5 @@
-//need to change 3 inputs back to just WardrobeZero
-
 import React, { Component } from 'react';
-import WardrobeZeroForm from './WardrobeZeroForm';
-import PersonalInfoForm from './PersonalInfoForm';
-import { Link, Switch, Route } from 'react-router-dom';
-import Login from './Login';
-import Signup from './Signup';
+import { Link } from 'react-router-dom';
 import DressingRoom from './DressingRoom';
 
 class Home extends Component{
@@ -44,13 +38,3 @@ class Home extends Component{
 }
 
 export default Home;
-
-
-// this used to be right after PersonalInfoForm
-// <PersonalInfoForm/>
-// <WardrobeZeroForm user={this.props.user}/>
-
-//this used to be after the two buttons
-// <li>
-//   <Link to="/wardrobes">Wardrobes</Link>
-// </li>

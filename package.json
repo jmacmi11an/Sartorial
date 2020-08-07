@@ -13,6 +13,9 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-typography": "^0.16.19",
+    "typography": "^0.16.19",
+    "typography-theme-parnassus": "^0.16.19",
     "underscore": "^1.10.2"
   },
   "scripts": {

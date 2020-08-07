@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import _ from 'underscore';
 import './dressingroom/DressingRoom.css';
-import fire, { db, currentUser } from "../config/fire";
 import { createOutfit } from './Helpers/outfit';
 
 

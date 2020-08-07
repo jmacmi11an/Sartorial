@@ -13,8 +13,6 @@ import {
   Switch,
   Route,
   Link,
-  useRouteMatch,
-  useParams
 } from "react-router-dom";
 
 
@@ -99,7 +97,6 @@ class App extends Component {
                 userDetails: doc.data(),
                 filteredClothes: filteredWardrobe(doc.data().wardrobeZero)
               })
-              console.log("document data:", doc.data() );
             }
           }).catch(function(error){
             console.log("error getting document:", error);
@@ -195,12 +192,3 @@ class App extends Component {
 
 
 export default App;
-
-
-// used to be in the div in the ternary before wardrobe
-// <li>
-//   <Link to="/login">Login</Link>
-// </li>
-// <li>
-//   <Link to="/signup">Signup</Link>
-// </li>

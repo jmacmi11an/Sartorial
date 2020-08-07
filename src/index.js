@@ -3,8 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
-// import { Router, Route } from 'react-router';
+import Typography from 'typography'
+import parnassusTheme from 'typography-theme-parnassus'
 
+const typography = new Typography(parnassusTheme)
 
 
 

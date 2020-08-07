@@ -1,4 +1,3 @@
-import zero from './wardrobes/zero';
 import _ from 'underscore';
 
 export const createOutfit = (filtered) => {
