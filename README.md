@@ -26,7 +26,7 @@ Even with time dedicated to brainstorming the best way to store data I made a lo
 
 
 ### Future Updates
-[ ] Design - this website is in desperate need of some quality CSS.
+- [] Design - this website is in desperate need of some quality CSS.
 [ ] Creating a page that clearly allows users to modify what wardrobe items they have from within their Wardrobe Zero.
 [ ] Creating a page that clearly allows users to customize their Wardrobe Zero items. .
 [ ] Creating a page that clearly allows users to modify their personal information.
