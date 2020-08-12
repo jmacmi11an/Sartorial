@@ -26,22 +26,22 @@ Even with time dedicated to brainstorming the best way to store data I made a lo
 
 
 ### Future Updates
- [ ] Design - this website is in desperate need of some quality CSS.
- [ ] Creating a page that clearly allows users to modify what wardrobe items they have from within their Wardrobe Zero.
- [ ] Creating a page that clearly allows users to customize their Wardrobe Zero items. .
- [ ] Creating a page that clearly allows users to modify their personal information.
- [ ] Allow Profile photo options, style preferences and general personalization.
- [ ] Include easter eggs for users based on their birthday.
- [ ] Rethinking of WardrobeZero clothing objects so that they hold more of their own information including their image source, descriptions, seasonality,  etc.
- [ ] Remove hardcoding of wardrobe data.
- [ ] Adding an accessories form so users can select which accessories they have.
- [ ] Updating the Dressing Room page so that users can manually change specific items rather than always having it randomly generated.
- [ ] Creating a new component that stores items from Wardrobe Zero yet to be acquired that is displayed on the Dressing Room page.
- [ ] Creating a new component that stores accessories that the user owns (as well as greyed out ones they don't yet own).
- [ ] Using Framer.js to allow the accessory images to be dragged and dropped around the page.
- [ ] Allowing users to customize their wardrobe zero by importing their own photos to replace the stock photos.
- [ ] Allowing users to create custom wardrobes for different occasions. (hiking/evening/winter/etc.)
- [ ] Connect to a weather and location api to give outfit tips that are seasonally appropriate
- [ ] Add changes to what WardrobeZero is based on the age of the user. More casual when the user is younger, more formal as they age.
- [ ] Create a Wardrobes page that displays a searchable list of users and their public wardrobes.
- [ ] Add more content and unique pages about each of the wardrobe items. Why they were chosen to be a part of this wardrobe, good brands, how to search for quality, etc.
+- [ ] Design - this website is in desperate need of some quality CSS.
+- [ ] Creating a page that clearly allows users to modify what wardrobe items they have from within their Wardrobe Zero.
+- [ ] Creating a page that clearly allows users to customize their Wardrobe Zero items. .
+- [ ] Creating a page that clearly allows users to modify their personal information.
+- [ ] Allow Profile photo options, style preferences and general personalization.
+- [ ] Include easter eggs for users based on their birthday.
+- [ ] Rethinking of WardrobeZero clothing objects so that they hold more of their own information including their image source, descriptions, seasonality,  etc.
+- [ ] Remove hardcoding of wardrobe data.
+- [ ] Adding an accessories form so users can select which accessories they have.
+- [ ] Updating the Dressing Room page so that users can manually change specific items rather than always having it randomly generated.
+- [ ] Creating a new component that stores items from Wardrobe Zero yet to be acquired that is displayed on the Dressing Room page.
+- [ ] Creating a new component that stores accessories that the user owns (as well as greyed out ones they don't yet own).
+- [ ] Using Framer.js to allow the accessory images to be dragged and dropped around the page.
+- [ ] Allowing users to customize their wardrobe zero by importing their own photos to replace the stock photos.
+- [ ] Allowing users to create custom wardrobes for different occasions. (hiking/evening/winter/etc.)
+- [ ] Connect to a weather and location api to give outfit tips that are seasonally appropriate
+- [ ] Add changes to what WardrobeZero is based on the age of the user. More casual when the user is younger, more formal as they age.
+- [ ] Create a Wardrobes page that displays a searchable list of users and their public wardrobes.
+- [ ] Add more content and unique pages about each of the wardrobe items. Why they were chosen to be a part of this wardrobe, good brands, how to search for quality, etc.
