@@ -113,24 +113,20 @@ class App extends Component {
       <div className="App">
         <Router>
           <div>
-          <h1>Sar<span>t</span>orial</h1>
-          <h4>Welcome {(this.state.userDetails["First Name"]) ? this.state.userDetails["First Name"] : "to your fashion solution"} </h4>
+            <ul className="navbar">
+              <div className="navbar">
+                <Link className="title" to="/">SARTORIAL</Link>
+              </div>
+            </ul>
           <ul className="navbar">
             {this.state.user
             ?
-            <div>
-              <li>
-                <Link onClick={this.logout} to="/">Logout</Link>
-              </li>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/dressingroom">Dressing Room</Link>
-              </li>
-              <li>
-                <Link to="/wardrobes">Wardrobes</Link>
-              </li>
+            <div className="navbar">
+              <Link onClick={this.logout} to="/">Logout {this.state.userDetails["First Name"]}</Link>
+              <Link to="/">Home </Link>
+              <Link className="title" to="/">SARTORIAL</Link>
+              <Link to="/dressingroom">Dressing Room</Link>
+              <Link to="/wardrobes">Wardrobes</Link>
             </div>
             :
             <div>

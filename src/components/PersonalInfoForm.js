@@ -62,7 +62,9 @@ class PersonalInfoForm extends Component{
         onChange={this.handleChange}
         id="dob"
         />
-        <button>Next Page...</button>
+        <div className="buttons" id="next">
+          <button>Next Page...</button>
+        </div>
       </form>
     )
   }

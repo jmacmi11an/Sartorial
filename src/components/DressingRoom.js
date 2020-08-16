@@ -34,25 +34,27 @@ class DressingRoom extends Component{
   render(props){
     return(
       <div>
-        <h1>What would you like to wear today Mr. {(this.props.userDetails["Last Name"])}? </h1>
-
-
-        {(this.state.clicked) ?
-          <form onSubmit={this.onSubmit}>
-            <button>Try Again</button>
-          </form>
-        :
-          <form onSubmit={this.onSubmit}>
-            <button>Dress Me</button>
-          </form>
-        }
-
         {(this.state.clicked) ?
           <div>
             <Outfit outfit={this.state.outfit}/>
           </div>
           :
           null
+        }
+
+        {(this.state.clicked) ?
+          <form onSubmit={this.onSubmit}>
+            <div className="buttons">
+              <button>Try Again</button>
+              <h3>Continuing to build your wardrobe will give you more outfit possibilities</h3>
+            </div>
+          </form>
+        :
+          <form onSubmit={this.onSubmit}>
+            <div className="buttons">
+              <button>Dress Me</button>
+            </div>
+          </form>
         }
       </div>
     )
@@ -69,7 +71,6 @@ function Outfit(props){
   return(
     <div className="outfit">
       { props.outfit.map( (source) => <img src={source.data.img} alt={source.name} key={ source.name } className="outfit"/> ) }
-      <h3>Continuing to build your wardrobe will give you more outfit possibilities</h3>
     </div>
   )
 }

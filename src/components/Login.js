@@ -46,7 +46,9 @@ class Login extends Component{
           placeholder="enter password"
           value={this.state.password}
           />
-          <button>Login</button>
+          <div className="buttons">
+            <button>Login</button>
+          </div>
         </form>
       </div>
     )

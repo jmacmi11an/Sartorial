@@ -1,15 +1,18 @@
-button {
-  margin: 4px;
-  padding: 4px;
-  border-radius: 1px;
-}
-
 div.outfit {
   max-width: 80%;
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+  margin: auto;
+  margin-top: 4em;
+  margin-bottom: 4em;
+  height: 205px;
+
 }
 
 img.outfit {
   border: 1em;
   margin: .5em;
-  height: 200px;
+  box-shadow: 3px 3px 5px 6px #ccc;
+  height: 190px;
 }

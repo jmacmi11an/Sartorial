@@ -50,7 +50,9 @@ class Signup extends Component{
           placeholder="enter password"
           value={this.state.password}
           />
-          <button>Signup</button>
+          <div className="buttons">
+            <button>Signup</button>
+          </div>
         </form>
         :
         <div>

@@ -1,20 +1,33 @@
 .wardrobe0 img {
-  height: 210px;
-  border: 1px solid black
+  height: 180px;
+  box-shadow: 1px 1px 5px 1px #555;
+  margin: 5px;
 }
-
 
 img.active {
-  opacity: .5;
-  background-color: yellow;
-  border: 3px solid black;
-  height: 200px;
+  opacity: .45;
+  /* background-color: yellow; */
+  /* border: 3px solid pink; */
+  box-shadow: 2px 2px 5px 2px #d4b6bb;
+  height: 180px;
+  /* height: 200px; */
 }
 
-form button {
+div.hanger {
+  text-align: center;
+  margin: auto;
+  width: 80%;
+  background-color: #f7f7f7;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+/* form button {
   border: 1px solid black;
   border-radius: 4px;
   padding: 1em;
   display: inline-block;
-  background-color: white;
-}
+  background-color: white; #d4b6bb  #f7f7f7
+} */
