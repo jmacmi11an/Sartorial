@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 class Wardrobes extends Component{
-  constructor(){
-    super()
-  }
-
   render(){
     return(
       <div>

@@ -3,10 +3,6 @@ import { Link } from 'react-router-dom';
 import DressingRoom from './DressingRoom';
 
 class Home extends Component{
-  constructor(props){
-    super(props)
-  }
-
   render(props){
     console.log(this.props.userDetails)
     return(
