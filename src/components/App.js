@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Helmet } from 'react-helmet'
 import fire, { db, currentUser } from '../config/fire';
 import Login from './Login';
 import Signup from './Signup';
@@ -16,6 +17,25 @@ import {
 } from "react-router-dom";
 
 
+
+
+// test
+
+const TITLE = 'Sartorial'
+
+class MyComponent extends React.PureComponent {
+  render () {
+    return (
+      <>
+        <Helmet>
+          <title>{ TITLE }</title>
+        </Helmet>
+        ...
+      </>
+    )
+  }
+}
+// test
 
 class App extends Component {
   constructor(){
@@ -111,6 +131,9 @@ class App extends Component {
   render(){
     return (
       <div className="App">
+        <Helmet>
+          <title>{ TITLE }</title>
+        </Helmet>
         <Router>
           <div>
             <ul className="navbar">
